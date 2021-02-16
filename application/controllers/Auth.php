@@ -36,17 +36,24 @@ class Auth extends CI_Controller
     if ($user) {
       if (password_verify($password, $user['password'])) {
         $data = [
-          'email' => $user['email'],
+          'nama' => $user['nama_guru'],
+          'nik' => $user['nip'],
           'role_id' => $user['role_id']
         ];
         $this->session->set_userdata($data);
-        redirect('user');
+        if ($user['role_id'] == 1) {
+          // Arahkan ke halaman Admin
+          redirect('guru');
+        } else {
+          // Arahkan ke halaman musyrif
+          redirect('kepsek');
+        }
       } else {
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password</div>');
         redirect('auth');
       }
     } else {
-      $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Your Account Not register</div>');
+      $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun belum terdaftar</div>');
       redirect('auth');
     }
   }
@@ -77,8 +84,9 @@ class Auth extends CI_Controller
       $nama = htmlspecialchars($this->input->post('nama_guru', true));
       $data = [
         'nip' => $nip,
+        'nama_guru' => $nama,
         'password' => $password,
-        'nama_guru' => $nama
+        'role_id' => 1
       ];
       $this->db->insert('guru', $data);
       redirect('auth');

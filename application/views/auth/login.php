@@ -24,6 +24,7 @@
     <!-- /.login-logo -->
     <div class="card">
       <div class="card-body login-card-body">
+        <?= $this->session->flashdata('message'); ?>
         <p class="login-box-msg">Silahkan login terlebih dahulu</p>
 
         <form action="<?= base_url('auth'); ?>" method="POST">
