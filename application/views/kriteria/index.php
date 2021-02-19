@@ -48,7 +48,7 @@
                           <td><?= $k['bobot']; ?></td>
                           <td class="text-center">
                             <a href="" data-toggle="modal" data-target="#ubahKriteria<?= $k['id_kriteria']; ?>" class="badge badge-success"><i class="fas fa-fw fa-edit"></i> Ubah</a>
-                            <a href="<?= base_url('Kriteria/delete/' . $k['id_kriteria']); ?>" class="badge badge-danger"><i class="fas fa-fw fa-trash"></i>Hapus</a>
+                            <a href="<?= base_url('Kriteria/delete/' . $k['id_kriteria']); ?>" class="badge badge-danger" onclick="return confirm('Hapus data ini?');"><i class="fas fa-fw fa-trash"></i>Hapus</a>
                           </td>
                         </tr>
                       <?php endforeach; ?>

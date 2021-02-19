@@ -48,7 +48,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link <?= $url1 == 'Alternatif' ? 'active' : ''; ?>">
+              <a href="<?= base_url('Alternatif'); ?>" class="nav-link <?= $url1 == 'Alternatif' ? 'active' : ''; ?>">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Data Alternatif

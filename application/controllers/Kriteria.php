@@ -31,13 +31,13 @@ class Kriteria extends CI_Controller
     $nama_kriteria = $this->input->post('nama_kriteria');
     $jenis_kriteria = $this->input->post('jenis_kriteria');
     $bobot = $this->input->post('bobot');
-    $cek = $jumlahBobot + $bobot;
-    // check($cek);
+
+    // Validasi jika jumlaah bobot sudah lebih dari 1 maka gagal menambah kriteria
     if ($jumlahBobot + $bobot > 1.0) {
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-          Data kriteria gagal ditambahkan <strong>Jumlah bobot > 1</strong>.
+          Data kriteria gagal ditambahkan <strong>Jumlah bobot sudah lebih dari 1</strong>.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
