@@ -32,9 +32,11 @@
                     <thead class="text-center">
                       <tr>
                         <th style="width: 15px">No</th>
-                        <th>Nama Kriteria</th>
-                        <th>Jenis Kriteria</th>
-                        <th>Bobot Kriteria</th>
+                        <th style="width: 100px">Kode Kriteria</th>
+                        <th style="width: 250px;">Nama Kriteria</th>
+                        <th style="width: 150px;">Jenis Kriteria</th>
+                        <th style="width: 80px;">Bobot Kriteria</th>
+                        <th>Keterangan Kriteria</th>
                         <th style="width: 180px">Aksi</th>
                       </tr>
                     </thead>
@@ -43,9 +45,11 @@
                       foreach ($kriteria as $k) : ?>
                         <tr>
                           <td><?= $no++; ?></td>
+                          <td><?= $k['kode_kriteria']; ?></td>
                           <td><?= $k['nama_kriteria']; ?></td>
                           <td><?= $k['jenis_kriteria']; ?></td>
-                          <td><?= $k['bobot']; ?></td>
+                          <td style="text-align: center;"><?= $k['bobot']; ?></td>
+                          <td><?= $k['keterangan']; ?></td>
                           <td class="text-center">
                             <a href="" data-toggle="modal" data-target="#ubahKriteria<?= $k['id_kriteria']; ?>" class="badge badge-success"><i class="fas fa-fw fa-edit"></i> Ubah</a>
                             <a href="<?= base_url('Kriteria/delete/' . $k['id_kriteria']); ?>" class="badge badge-danger" onclick="return confirm('Hapus data ini?');"><i class="fas fa-fw fa-trash"></i>Hapus</a>
@@ -79,6 +83,12 @@
           <form class="form-horizontal" action="<?= base_url('Kriteria/add'); ?>" method="POST">
             <div class="modal-body">
               <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Kode Kriteria</label>
+                <div class="col-sm-10">
+                  <input type="text" name="kode_kriteria" class="form-control" id="inputEmail3" value="<?= $kode_kriteria; ?>" readonly>
+                </div>
+              </div>
+              <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Kriteria</label>
                 <div class="col-sm-10">
                   <input type="text" name="nama_kriteria" class="form-control" id="inputEmail3" placeholder="Masukkan Nama Kriteria" required>
@@ -98,6 +108,12 @@
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Bobot Kriteria</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="inputPassword3" placeholder="Masukkan Bobot Kriteria" name="bobot" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-form-label">Keterangan Kriteria</label>
+                <div class="">
+                  <textarea name="keterangan" class="form-control" id="keterangan" cols="100" rows="3" required></textarea>
                 </div>
               </div>
               <!-- /.card-body -->
@@ -129,6 +145,12 @@
             <form class="form-horizontal" action="<?= base_url('Kriteria/update/' . $kr['id_kriteria']); ?>" method="POST">
               <div class="modal-body">
                 <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Kode Kriteria</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="kode_kriteria" class="form-control" id="inputEmail3" value="<?= $kr['kode_kriteria']; ?>" readonly>
+                  </div>
+                </div>
+                <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Kriteria</label>
                   <div class="col-sm-10">
                     <input type="text" name="nama_kriteria" class="form-control" id="inputEmail3" placeholder="Masukkan Nama Kriteria" required value="<?= $kr['nama_kriteria']; ?>">
@@ -154,6 +176,12 @@
                   <label for="inputPassword3" class="col-sm-2 col-form-label">Bobot Kriteria</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputPassword3" placeholder="Masukkan Bobot Kriteria" name="bobot" required value="<?= $kr['bobot']; ?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-form-label">Keterangan Kriteria</label>
+                  <div class="">
+                    <textarea name="keterangan" class="form-control" id="keterangan" cols="100" rows="3" required><?= $kr['keterangan']; ?></textarea>
                   </div>
                 </div>
                 <!-- /.card-body -->

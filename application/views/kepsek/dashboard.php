@@ -24,10 +24,9 @@
                   <h5 class="m-0">Featured</h5>
                 </div>
                 <div class="card-body">
-                  <!-- <h6 class="card-title">Special title treatment</h6> -->
-                  <br>
-                  <?= $this->session->flashdata('message'); ?>
-                  <a href="<?= base_url('guru/reset_data'); ?>" class="btn btn-danger btn-xl" onclick="return confirm('Seluruh data akan dikosongkan, yakin akan reset data ?');">Reset Data</a>
+                  <h6 class="card-title">Special title treatment</h6>
+
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
               </div>
             </div>

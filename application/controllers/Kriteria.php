@@ -18,6 +18,7 @@ class Kriteria extends CI_Controller
       'title' => 'Data Kriteria',
       'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
       'kriteria' => $this->M_Kriteria->getAllKriteria(),
+      'kode_kriteria' => $this->M_Kriteria->KodeKriteria(),
       'isi' => 'kriteria/index'
     ];
     // check($data['user']);
@@ -28,8 +29,10 @@ class Kriteria extends CI_Controller
   public function add()
   {
     $jumlahBobot = round($this->M_Kriteria->jumlahBobotKriteria(), 2);
+    $kode_kriteria = $this->input->post('kode_kriteria');
     $nama_kriteria = $this->input->post('nama_kriteria');
     $jenis_kriteria = $this->input->post('jenis_kriteria');
+    $keterangan = $this->input->post('keterangan');
     $bobot = $this->input->post('bobot');
 
     // Validasi jika jumlaah bobot sudah lebih dari 1 maka gagal menambah kriteria
@@ -46,9 +49,11 @@ class Kriteria extends CI_Controller
       redirect('Kriteria');
     } else {
       $data = [
+        'kode_kriteria' => $kode_kriteria,
         'nama_kriteria' => $nama_kriteria,
         'jenis_kriteria' => $jenis_kriteria,
-        'bobot' => $bobot
+        'bobot' => $bobot,
+        'keterangan' => $keterangan
       ];
       $this->M_Kriteria->addKriteria($data);
       $this->session->set_flashdata(
@@ -69,9 +74,11 @@ class Kriteria extends CI_Controller
   {
     $data = [
       'id_kriteria' => $id,
+      'kode_kriteria' => $this->input->post('kode_kriteria'),
       'nama_kriteria' => $this->input->post('nama_kriteria'),
       'jenis_kriteria' => $this->input->post('jenis_kriteria'),
-      'bobot' => $this->input->post('bobot')
+      'bobot' => $this->input->post('bobot'),
+      'keterangan' => $this->input->post('keterangan')
     ];
     $this->M_Kriteria->updateKriteria($data);
     $this->session->set_flashdata(
