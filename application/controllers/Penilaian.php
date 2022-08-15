@@ -12,20 +12,49 @@ class Penilaian extends CI_Controller
     $this->load->model('M_Penilaian');
   }
 
+  //function yang mengarah ke modal M_penilaian dan M_kriteria
 
   public function index()
   {
     $data = [
       'title' => 'Penilaian Alternatif',
-      'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
       'kriteria' => $this->M_Kriteria->getAllKriteria(),
       'penilaian' => $this->M_Penilaian->getDataPenilaian(),
+      'datanilai' => $this->M_Penilaian->getNilai(),
       'isi' => 'penilaian/index'
     ];
     // check($data['user']);
     $this->load->view('templates/wrapper', $data);
   }
 
+  public function Nilai_alternatif()
+  {
+    $data = [
+      'title' => 'Penilaian Alternatif',
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
+      'kriteria' => $this->M_Kriteria->getAllKriteria(),
+      'penilaian' => $this->M_Penilaian->getDataPenilaian(),
+      'isi' => 'penilaian/nilai_alternatif'
+    ];
+    // check($data['user']);
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  public function Hasil()
+  {
+    $data = [
+      'title' => 'Hasil Penilaian',
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
+      'kriteria' => $this->M_Kriteria->getAllKriteria(),
+      'penilaian' => $this->M_Penilaian->getDataPenilaian(),
+      'isi' => 'penilaian/hasil_nilai'
+    ];
+    // check($data['user']);
+    $this->load->view('templates/wrapper', $data);
+  }
+
+  //function form 
   public function aksi_penilaian_alternatif()
   {
     $this->M_Penilaian->PenilaianAlternatif();
@@ -41,33 +70,20 @@ class Penilaian extends CI_Controller
     redirect('Penilaian');
   }
 
-  // Tampilkan hasil kecocokan
-  public function Rating_kecocokan()
-  {
-    $data = [
-      'title' => 'Hasil Rating Kecocokan',
-      'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
-      'kriteria' => $this->M_Kriteria->getAllKriteria(),
-      'kecocokan' => $this->M_Penilaian->getDataKecocokan(),
-      'isi' => 'penilaian/rating_kecocokan'
-    ];
-    // check($data['user']);
-    $this->load->view('templates/wrapper', $data);
-  }
+ 
 
   public function Normalisasi()
   {
     $data = [
-      'title' => 'Hasil Rating Kecocokan',
-      'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
+      'title' => 'Hasil Normalisasi',
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
       'kriteria' => $this->M_Kriteria->getAllKriteria(),
-      'kecocokan' => $this->M_Penilaian->getDataKecocokan(),
+      'nilai' => $this->M_Penilaian->getDataKecocokan(),
       'isi' => 'penilaian/normalisasi',
       'jKriteria1' => $this->M_Penilaian->cekKriteria1(),
       'jKriteria2' => $this->M_Penilaian->cekKriteria2(),
-      'jKriteria3' => $this->M_Penilaian->cekKriteria3(),
+      'jKriteria3' => $this->M_Penilaian->cekKriteria3(), 
       'jKriteria4' => $this->M_Penilaian->cekKriteria4(),
-      'jKriteria5' => $this->M_Penilaian->cekKriteria5(),
       'MaxC1' => $this->M_Penilaian->MaxC1(),
       'MinC1' => $this->M_Penilaian->MinC1(),
       'MaxC2' => $this->M_Penilaian->MaxC2(),
@@ -76,10 +92,8 @@ class Penilaian extends CI_Controller
       'MinC3' => $this->M_Penilaian->MinC3(),
       'MaxC4' => $this->M_Penilaian->MaxC4(),
       'MinC4' => $this->M_Penilaian->MinC4(),
-      'MaxC5' => $this->M_Penilaian->MaxC5(),
-      'MinC5' => $this->M_Penilaian->MinC5(),
     ];
-    // check($data['jKriteria1']);
+    // check($data['MaxC2']);
     $this->load->view('templates/wrapper', $data);
   }
 
@@ -87,15 +101,14 @@ class Penilaian extends CI_Controller
   {
     $data = [
       'title' => 'Hasil Perhitungan SAW',
-      'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
       'kriteria' => $this->M_Kriteria->getAllKriteria(),
-      'kecocokan' => $this->M_Penilaian->getDataKecocokan(),
+      'nilai' => $this->M_Penilaian->getDataKecocokan(),
       'isi' => 'penilaian/hasil_perhitungan',
       'jKriteria1' => $this->M_Penilaian->cekKriteria1(),
       'jKriteria2' => $this->M_Penilaian->cekKriteria2(),
       'jKriteria3' => $this->M_Penilaian->cekKriteria3(),
       'jKriteria4' => $this->M_Penilaian->cekKriteria4(),
-      'jKriteria5' => $this->M_Penilaian->cekKriteria5(),
       'MaxC1' => $this->M_Penilaian->MaxC1(),
       'MinC1' => $this->M_Penilaian->MinC1(),
       'MaxC2' => $this->M_Penilaian->MaxC2(),
@@ -104,15 +117,12 @@ class Penilaian extends CI_Controller
       'MinC3' => $this->M_Penilaian->MinC3(),
       'MaxC4' => $this->M_Penilaian->MaxC4(),
       'MinC4' => $this->M_Penilaian->MinC4(),
-      'MaxC5' => $this->M_Penilaian->MaxC5(),
-      'MinC5' => $this->M_Penilaian->MinC5(),
       'bobotC1' => $this->M_Kriteria->bobotC1(),
       'bobotC2' => $this->M_Kriteria->bobotC2(),
       'bobotC3' => $this->M_Kriteria->bobotC3(),
       'bobotC4' => $this->M_Kriteria->bobotC4(),
-      'bobotC5' => $this->M_Kriteria->bobotC5(),
     ];
-    // check($data['bobotC1']);
+    // check($data['bobotC4']);
     $this->load->view('templates/wrapper', $data);
   }
 
@@ -137,13 +147,15 @@ class Penilaian extends CI_Controller
   {
     $data = [
       'title' => 'Data Hasil Perankingan',
-      'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
       'perankingan' => $this->M_Penilaian->getDataPerankingan(),
       'isi' => 'penilaian/perankingan'
     ];
     // check($data['user']);
     $this->load->view('templates/wrapper', $data);
   }
+
+ 
 }
 
 /* End of file Penilaian.php */

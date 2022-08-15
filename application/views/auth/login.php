@@ -14,61 +14,61 @@
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/dist/css/adminlte.min.css">
+
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/dist/css/style.css">
 </head>
 
-<body class="hold-transition login-page">
-  <div class="login-box">
-    <div class="login-logo">
-      <a href="../../index2.html"><b>Admin</b>LTE</a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="card">
-      <div class="card-body login-card-body">
-        <?= $this->session->flashdata('message'); ?>
-        <p class="login-box-msg">Silahkan login terlebih dahulu</p>
-
-        <form action="<?= base_url('auth'); ?>" method="POST">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Masukkan NIK" name="nik">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-user"></span>
-              </div>
-            </div>
-          </div>
-          <small class="text-danger"><?= form_error('nik'); ?></small>
-          <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password" name="password">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
-            </div>
-          </div>
-          <small class="text-danger"><?= form_error('password'); ?></small>
+<body>
+ 
+  <div class=" login-page">
+    <div class="login-box">
+      <!-- /.login-logo -->
+      <div class="card border-pill shadow-sm border brdsz border-dark px-3">
+        <div class="card-body login-card-body ">
+          <div class="h4 text-center mt-4">SELAMAT DATANG</div>
           <div class="row">
-            <div class="col-4">
+            <div class="col text-center ">
+              <p> Sistem Pendukung Keputusan Penilaian Kinerja Guru Terbaik </p>
+              <p style="text-align: center;"> SMK N 1 PADAN </p>
             </div>
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-            </div>
-            <!-- /.col -->
-            <div class="col-4">
-            </div>
-            <!-- /.col -->
           </div>
-        </form>
+          <?= $this->session->flashdata('message'); ?>
+          <p class="login-box-msg">Silahkan login terlebih dahulu</p>
+
+          <form action="<?= base_url('auth'); ?>" method="POST">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Masukkan NIP" name="nip">
+              
+            </div>
+            <small class="text-danger"><?= form_error('nip'); ?></small>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" placeholder="Password" name="password">
+              
+            </div>
+            <small class="text-danger"><?= form_error('password'); ?></small>
+            <div class="row">
+              <div class="col-4">
+              </div>
+              <div class="col-4">
+                <button type="submit" class="rounded-pill btn btn-primary btn-block">Sign In</button>
+              </div>
+              <!-- /.col -->
+              <div class="col-4">
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
 
 
-        <p class="mb-1 mt-4 text-center">
-          <a href="<?= base_url('auth/registrasi'); ?>">Registrasi</a>
-        </p>
+          <p class="mb-1 mt-4 text-center">
+            <a href="<?= base_url('auth/registrasi'); ?>">Registrasi</a>
+          </p>
+        </div>
+        <!-- /.login-card-body -->
       </div>
-      <!-- /.login-card-body -->
     </div>
+    <!-- /.login-box -->
   </div>
-  <!-- /.login-box -->
-
   <!-- jQuery -->
   <script src="<?= base_url('assets'); ?>/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->

@@ -16,7 +16,7 @@ class M_Alternatif extends CI_Model
   public function addIdAlternatif($data_id_alternatif)
   {
     $this->db->insert('nilai', $data_id_alternatif);
-    $this->db->insert('kecocokan', $data_id_alternatif);
+    $this->db->insert('data_nilai', $data_id_alternatif);
   }
 
   public function updateAlternatif($data_alternatif)
@@ -29,6 +29,7 @@ class M_Alternatif extends CI_Model
   {
     $this->deleteKecocokanAlternatif($data_alternatif);
     $this->deleteNilaiAlternatif($data_alternatif);
+    $this->deleteRankingAlternatif($data_alternatif);
     $this->db->where('id_alternatif', $data_alternatif['id_alternatif']);
     $this->db->delete('alternatif', $data_alternatif);
   }
@@ -42,7 +43,12 @@ class M_Alternatif extends CI_Model
   public function deleteKecocokanAlternatif($data_alternatif)
   {
     $this->db->where('id_alternatif', $data_alternatif['id_alternatif']);
-    $this->db->delete('kecocokan', $data_alternatif);
+    $this->db->delete('data_nilai', $data_alternatif);
+  }
+  public function deleteRankingAlternatif($data_alternatif)
+  {
+    $this->db->where('id_alternatif', $data_alternatif['id_alternatif']);
+    $this->db->delete('ranking', $data_alternatif);
   }
   // ./Hapus data alternatif pada tabel penilaian dan kecocokan
 }

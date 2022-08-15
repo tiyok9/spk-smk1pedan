@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Guru extends CI_Controller
+class Admin extends CI_Controller
 {
 
   public function index()
@@ -9,7 +9,7 @@ class Guru extends CI_Controller
     $data = [
       'title' => 'Dashboard',
       'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
-      'isi' => 'guru/dashboard'
+      'isi' => 'admin/dashboard'
     ];
     // check($data['user']);
     $this->load->view('templates/wrapper', $data);
@@ -31,8 +31,8 @@ class Guru extends CI_Controller
         </button>
       </div>'
     );
-    redirect('Guru');
+    redirect('Admin');
   }
 }
 
-/* End of file Kepsek.php */
+/* End of file Guru.php */

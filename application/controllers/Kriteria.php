@@ -16,7 +16,7 @@ class Kriteria extends CI_Controller
   {
     $data = [
       'title' => 'Data Kriteria',
-      'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
       'kriteria' => $this->M_Kriteria->getAllKriteria(),
       'kode_kriteria' => $this->M_Kriteria->KodeKriteria(),
       'isi' => 'kriteria/index'
@@ -35,8 +35,8 @@ class Kriteria extends CI_Controller
     $keterangan = $this->input->post('keterangan');
     $bobot = $this->input->post('bobot');
 
-    // Validasi jika jumlaah bobot sudah lebih dari 1 maka gagal menambah kriteria
-    if ($jumlahBobot + $bobot > 1.0) {
+    // Validasi jika jumlah bobot sudah lebih dari 100 maka gagal menambah kriteria
+    if ($jumlahBobot + $bobot > 100) {
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-warning alert-dismissible fade show" role="alert">

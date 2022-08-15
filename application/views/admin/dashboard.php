@@ -3,7 +3,7 @@
       <!-- Main content -->
       <div class="content " >
         <div class="container-fluid " >
-          <div class="row  shadow bg-white " style="margin-top:60px">
+          <div class="row  shadow bg-white ">
             
               <!-- <div class="card"> -->
               <div class="card-header mrdsbad " >

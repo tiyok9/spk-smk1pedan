@@ -29,48 +29,59 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alternatif` (
   `id_alternatif` int(11) NOT NULL,
+  `nip` bigint(18) NOT NULL,
   `nama_alternatif` varchar(255) NOT NULL,
+  `jabatan` varchar(255) NOT NULL,
   `jenkel` enum('P','L') NOT NULL,
-  `kelas` char(2) NOT NULL
+  `pendidikan` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guru`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `guru` (
-  `id_guru` int(11) NOT NULL,
-  `nip` int(11) NOT NULL,
-  `nama_guru` varchar(200) NOT NULL,
+CREATE TABLE `admin` (
+  `id_user` int(11) NOT NULL,
+  `nip` bigint(18) NOT NULL,
+  `nama_user` varchar(200) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `guru`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `guru` (`id_guru`, `nip`, `nama_guru`, `password`, `role_id`) VALUES
+INSERT INTO `admin` (`id_user`, `nip`, `nama_user`, `password`, `role_id`) VALUES
 (1, 17120087, 'Alfonso Aryando S', '$2y$10$srA6lHJWfneG.8exn4okIuCzLKAqm7H/D.TKU.AwGjVcFxRPHJX4q', 1),
 (2, 17120111, 'Hesti Nur Ahyani', '$2y$10$nUEJOXJ79CWsuC05PAKaKOLfHE1kPtuQY3Bm5CcZwxTVkr9u0SoT6', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kecocokan`
+-- Table structure for table `data_nilai`
 --
-
-CREATE TABLE `kecocokan` (
-  `id_kecocokan` int(11) NOT NULL,
+CREATE TABLE `data_nilai` (
+  `id_data` int(11) NOT NULL,
   `id_alternatif` int(11) NOT NULL,
-  `C1` int(11) DEFAULT NULL,
-  `C2` int(11) DEFAULT NULL,
-  `C3` int(11) DEFAULT NULL,
-  `C4` int(11) DEFAULT NULL,
-  `C5` int(11) DEFAULT NULL
+  `P1` int(11) DEFAULT NULL,
+  `P2` int(11) DEFAULT NULL,
+  `P3` int(11) DEFAULT NULL,
+  `P4` int(11) DEFAULT NULL,
+  `P5` int(11) DEFAULT NULL,
+  `P6` int(11) DEFAULT NULL,
+  `P7` int(11) DEFAULT NULL,
+  `K1` int(11) DEFAULT NULL,
+  `K2` int(11) DEFAULT NULL,
+  `K3` int(11) DEFAULT NULL,
+  `S1` int(11) DEFAULT NULL,
+  `S2` int(11) DEFAULT NULL,
+  `G1` int(11) DEFAULT NULL,
+  `G2` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -99,8 +110,8 @@ CREATE TABLE `nilai` (
   `K1` int(11) DEFAULT NULL,
   `K2` int(11) DEFAULT NULL,
   `K3` int(11) DEFAULT NULL,
-  `K4` int(11) DEFAULT NULL,
-  `K5` int(11) DEFAULT NULL
+  `K4` int(11) DEFAULT NULL
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -117,24 +128,6 @@ CREATE TABLE `ranking` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `role`
---
-
-CREATE TABLE `role` (
-  `id_role` int(11) NOT NULL,
-  `role` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `role`
---
-
-INSERT INTO `role` (`id_role`, `role`) VALUES
-(1, 'Guru'),
-(2, 'Kepsek');
-
---
 -- Indexes for dumped tables
 --
 
@@ -145,16 +138,16 @@ ALTER TABLE `alternatif`
   ADD PRIMARY KEY (`id_alternatif`);
 
 --
--- Indexes for table `guru`
+-- Indexes for table `admin`
 --
-ALTER TABLE `guru`
-  ADD PRIMARY KEY (`id_guru`);
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_user`);
 
 --
--- Indexes for table `kecocokan`
+-- Indexes for table `data_nilai`
 --
-ALTER TABLE `kecocokan`
-  ADD PRIMARY KEY (`id_kecocokan`);
+ALTER TABLE `data_nilai`
+  ADD PRIMARY KEY (`id_data`);
 
 --
 -- Indexes for table `kriteria`
@@ -174,11 +167,6 @@ ALTER TABLE `nilai`
 ALTER TABLE `ranking`
   ADD PRIMARY KEY (`id_ranking`);
 
---
--- Indexes for table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`id_role`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -193,14 +181,9 @@ ALTER TABLE `alternatif`
 --
 -- AUTO_INCREMENT for table `guru`
 --
-ALTER TABLE `guru`
-  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `admin`
+  MODIFY `id_user` bigint(18) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- AUTO_INCREMENT for table `kecocokan`
---
-ALTER TABLE `kecocokan`
-  MODIFY `id_kecocokan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kriteria`
@@ -208,6 +191,11 @@ ALTER TABLE `kecocokan`
 ALTER TABLE `kriteria`
   MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT;
 
+--
+-- AUTO_INCREMENT for table `nilai`
+--
+ALTER TABLE `data_nilai`
+  MODIFY `id_data` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `nilai`
 --
@@ -220,12 +208,7 @@ ALTER TABLE `nilai`
 ALTER TABLE `ranking`
   MODIFY `id_ranking` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `role`
---
-ALTER TABLE `role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

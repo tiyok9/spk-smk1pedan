@@ -20,14 +20,12 @@
           <div class="row">
             <div class="col-lg">
               <div class="card">
-                <div class="card-header bg-success">
-                  <h5 class="m-0">Olah Data Kriteria</h5>
+                <div class="card-header bg-light">
+                  <h5 class="m-0"> Data Kriteria</h5>
                 </div>
                 <div class="card-body">
                   <?= $this->session->flashdata('message'); ?>
-                  <div class="mb-3 mt-2">
-                    <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#tambahKriteria"> Tambah Data Kriteria</button>
-                  </div>
+                  
                   <table class="table table-bordered">
                     <thead class="text-center">
                       <tr>
@@ -51,13 +49,19 @@
                           <td style="text-align: center;"><?= $k['bobot']; ?></td>
                           <td><?= $k['keterangan']; ?></td>
                           <td class="text-center">
-                            <a href="" data-toggle="modal" data-target="#ubahKriteria<?= $k['id_kriteria']; ?>" class="badge badge-success"><i class="fas fa-fw fa-edit"></i> Ubah</a>
-                            <a href="<?= base_url('Kriteria/delete/' . $k['id_kriteria']); ?>" class="badge badge-danger" onclick="return confirm('Hapus data ini?');"><i class="fas fa-fw fa-trash"></i>Hapus</a>
+                            <a href="" data-toggle="modal" data-target="#ubahKriteria<?= $k['id_kriteria']; ?>" class="badge badge-success btn-costum"><i class="fas fa-fw fa-edit"></i> Edit</a>
+                            <a href="<?= base_url('Kriteria/delete/' . $k['id_kriteria']); ?>" class="badge badge-danger " onclick="return confirm('Hapus data ini?');"><i class="fas fa-fw fa-trash"></i>Delete</a>
                           </td>
                         </tr>
                       <?php endforeach; ?>
                     </tbody>
                   </table>
+                  <div class="col-12">
+
+                    <div class="mb-3 btn-krit mt-2">
+                      <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#tambahKriteria"> Tambah Data Kriteria</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -119,9 +123,9 @@
               <!-- /.card-body -->
               <!-- /.card-footer -->
             </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="modal-footer justify-content-end">
               <button type="submit" class="btn btn-primary">Simpan Data</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </form>
         </div>

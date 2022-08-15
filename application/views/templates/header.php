@@ -6,15 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>SD N 01 Kokosan | <?= $title; ?></title>
+  <title>SMK N 1 PEDAN | <?= $title; ?></title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/dist/css/style.css">
+  
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body class="hold-transition sidebar-mini">
-  <div class="wrapper">
+<body class=" layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-mini">
+
+  <div class="wrapper ">

@@ -48,7 +48,7 @@ class M_Kriteria extends CI_Model
   {
     $this->db->delete('kriteria', ['id_kriteria' => $data['id_kriteria']]);
   }
-
+// ambil bobot nilai dari tabel kriteria
   public function bobotC1()
   {
     return $this->db->get_where('kriteria', ['kode_kriteria' => 'C1'])->row_array();
@@ -65,10 +65,7 @@ class M_Kriteria extends CI_Model
   {
     return $this->db->get_where('kriteria', ['kode_kriteria' => 'C4'])->row_array();
   }
-  public function bobotC5()
-  {
-    return $this->db->get_where('kriteria', ['kode_kriteria' => 'C5'])->row_array();
-  }
+  
 }
 
 /* End of file M_Kriteria.php */

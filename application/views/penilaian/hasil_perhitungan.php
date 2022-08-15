@@ -20,8 +20,8 @@
          <div class="row">
            <div class="col-lg">
              <div class="card">
-               <div class="card-header bg-success">
-                 <h5 class="m-0">Data Rating Kecocokan</h5>
+               <div class="card-header bg-light">
+                 <h5 class="m-0">Hasil Perhitungan SAW</h5>
                </div>
                <div class="card-body">
                  <?= $this->session->flashdata('message'); ?>
@@ -46,78 +46,68 @@
                    </thead>
                    <tbody>
                      <?php $no = 1;
-                      if ($kecocokan)
-                        foreach ($kecocokan as $rk) : ?>
+                      if ($nilai)
+                        foreach ($nilai as $rk) : ?>
                        <tr>
                          <td><?= $no++; ?></td>
                          <td><?= $rk['nama_alternatif']; ?></td>
                          <td style="text-align: center;">
                            <?php
                             if ($jKriteria1 == 'Benefit') {
-                              $normalisasiK1 = $rk['C1'] / $MaxC1['C1'];
+                              $normalisasiK1 = $rk['K1'] / $MaxC1['K1'];
                               $hasilK1 = $normalisasiK1 * $bobotC1['bobot'];
-                              echo round($hasilK1, 1);
+                              echo round($hasilK1, 2);
                             } else {
-                              $normalisasiK1 = $MinC1['C1'] / $rk['C1'];
+                              $normalisasiK1 = $MinC1['K1'] / $rk['K1'];
                               $hasilK1 = $normalisasiK1 * $bobotC1['bobot'];
-                              echo round($hasilK1, 1);
+                              echo round($hasilK1, 2);
                             }
                             ?>
                          </td>
                          <td style="text-align: center;">
                            <?php
                             if ($jKriteria2 == 'Benefit') {
-                              $normalisasiK2 = $rk['C2'] / $MaxC2['C2'];
+                              $normalisasiK2 = $rk['K2'] / $MaxC2['K2'];
                               $hasilK2 = $normalisasiK2 * $bobotC2['bobot'];
-                              echo round($hasilK2, 1);
+                              echo round($hasilK2, 2);
                             } else {
-                              $normalisasiK2 = $MinC2['C2'] / $rk['C2'];
+                              $normalisasiK2 = $MinC2['K2'] / $rk['K2'];
                               $hasilK2 = $normalisasiK2 * $bobotC2['bobot'];
-                              echo round($hasilK2, 1);
+                              echo round($hasilK2, 2);
                             }
                             ?>
                          </td>
                          <td style="text-align: center;">
                            <?php
                             if ($jKriteria3 == 'Benefit') {
-                              $normalisasiK3 = $rk['C3'] / $MaxC3['C3'];
+                              $normalisasiK3 = $rk['K3'] / $MaxC3['K3'];
                               $hasilK3 = $normalisasiK3 * $bobotC3['bobot'];
-                              echo round($hasilK3, 1);
+                              echo round($hasilK3, 2);
                             } else {
-                              $normalisasiK3 = $MinC3['C3'] / $rk['C3'];
+                              $normalisasiK3 = $MinC3['K3'] / $rk['K3'];
                               $hasilK3 = $normalisasiK3 * $bobotC3['bobot'];
-                              echo round($hasilK3, 1);
+                              echo round($hasilK3, 2);
                             }
                             ?>
                          </td>
                          <td style="text-align: center;">
                            <?php
                             if ($jKriteria4 == 'Benefit') {
-                              $normalisasiK4 = $rk['C4'] / $MaxC4['C4'];
-                              $hasilK4 = $normalisasiK4 * $bobotC4['bobot'];
-                              echo round($hasilK4, 1);
+                              $normalisasiK4 = round($rk['K4'], 2) / $MaxC4['K4'];
+                              // $normK4 = round($normalisasiK4, 1);
+                              $hasilK4 = round($normalisasiK4, 2) * $bobotC4['bobot'];
+                              // check($hasilK4);
+                              echo round($hasilK4, 2);
                             } else {
-                              $normalisasiK4 = $MinC4['C4'] / $rk['C4'];
+                              $normalisasiK4 = $MinC4['K4'] / $rk['K4'];
                               $hasilK4 = $normalisasiK4 * $bobotC4['bobot'];
-                              echo round($hasilK4, 1);
+                              echo round($hasilK4, 2);
                             }
                             ?>
                          </td>
-                         <td style="text-align: center;">
-                           <?php
-                            if ($jKriteria5 == 'Benefit') {
-                              $normalisasiK5 = $rk['C5'] / $MaxC5['C5'];
-                              $hasilK5 = $normalisasiK5 * $bobotC5['bobot'];
-                              echo round($hasilK5, 1);
-                            } else {
-                              $normalisasiK5 = $MinC5['C5'] / $rk['C5'];
-                              $hasilK5 = $normalisasiK5 * $bobotC5['bobot'];
-                              echo round($hasilK5, 1);
-                            }
-                            ?>
-                         </td>
+                         
                          <?php
-                          $total = [$hasilK1, $hasilK2, $hasilK3, $hasilK4, $hasilK5];
+                          $total = [$hasilK1, $hasilK2, $hasilK3, $hasilK4];
                           $totalNilai = round(array_sum($total), 2);
                           // check($total);
                           ?>

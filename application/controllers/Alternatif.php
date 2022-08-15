@@ -16,7 +16,7 @@ class Alternatif extends CI_Controller
   {
     $data = [
       'title' => 'Data Alternatif',
-      'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
       'alternatif' => $this->M_Alternatif->getAllAlternatif(),
       'isi' => 'alternatif/index'
     ];
@@ -28,12 +28,16 @@ class Alternatif extends CI_Controller
   public function add()
   {
     $nama_alternatif = $this->input->post('nama_alternatif');
+    $nip = $this->input->post('nip');
+    $jabatan = $this->input->post('jabatan');
     $jenkel = $this->input->post('jenkel');
-    $kelas = $this->input->post('kelas');
+    $pendidikan = $this->input->post('pendidikan');
     $data_alternatif = [
       'nama_alternatif' => $nama_alternatif,
       'jenkel' => $jenkel,
-      'kelas' => $kelas
+      'nip' => $nip,
+      'jabatan' => $jabatan,
+      'pendidikan' => $pendidikan
     ];
     $this->M_Alternatif->addAlternatif($data_alternatif);
     // Ambil id_alternatif buat dimasukkin ke tabel nilai & kecocokan
@@ -58,12 +62,16 @@ class Alternatif extends CI_Controller
     $id_alternatif = $id;
     $nama_alternatif = $this->input->post('nama_alternatif');
     $jenkel = $this->input->post('jenkel');
-    $kelas = $this->input->post('kelas');
+    $nip = $this->input->post('nip');
+    $jabatan = $this->input->post('jabatan');
+    $pendidikan = $this->input->post('pendidikan');
     $data_alternatif = [
       'id_alternatif' => $id_alternatif,
       'nama_alternatif' => $nama_alternatif,
+      'nip' => $nip,
+      'jabatan' => $jabatan,
       'jenkel' => $jenkel,
-      'kelas' => $kelas
+      'pendidikan' => $pendidikan
     ];
     $this->M_Alternatif->updateAlternatif($data_alternatif);
     $this->session->set_flashdata(

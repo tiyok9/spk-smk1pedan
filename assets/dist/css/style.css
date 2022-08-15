@@ -1,0 +1,34 @@
+.mrdsbad{
+	margin-top: 50px;
+}
+
+
+.bck1 {
+	height: 400px;
+	width: 100%;
+}
+.bck2 {
+	background: no-repeat center fixed;
+	background-size: cover;
+}
+.brdsz {
+	border-width: 300px;
+	border-radius: 20px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+	background-color: aliceblue;
+	color: black;
+}
+.nav-sidebar > .nav-item {
+	color: black;
+}
+
+.nav-pills .nav-item .nav-link i,
+p {
+	color: #000000;
+}
+.tara {
+	background-color: #a9a9a9;
+}

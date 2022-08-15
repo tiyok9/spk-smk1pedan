@@ -14,69 +14,70 @@
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/dist/css/style.css">
 </head>
 
-<body class="hold-transition register-page">
-  <div class="register-box">
-    <div class="register-logo">
-      <a href="../../index2.html"><b>Admin</b>LTE</a>
+<body>
+  <!-- <div class="continer-fluid">
+    <div class="full-bg-img bck">
+      <img src="/gambar/bck.jpg" class="position-absolute bck">
+
     </div>
+  </div> -->
+  <div class="hold-transition register-page">
+    <div class=" register-box">
+      
 
-    <div class="card">
-      <div class="card-body register-card-body">
-        <p class="login-box-msg">Register a new membership</p>
-        <form action="<?= base_url('auth/registrasi'); ?>" method="POST">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap" name="nama_guru">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-user"></span>
+      <div class="card border-pill shadow-sm border brdsz border-dark px-3">
+        <div class="card-body register-card-body">
+          <div class="register-logo">
+            <p>Form Registrasi</p>
+          </div>
+          <form action="<?= base_url('auth/registrasi'); ?>" method="POST">
+            <div class="input-group mb-3 mt-4">
+              <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap" name="nama_user">
+              
+            </div>
+            <small class="text-danger"><?= form_error('nama_user'); ?></small>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Masukkan NIP" name="nip">
+              
+            </div>
+            <small class="text-danger"><?= form_error('nip'); ?></small>
+            <small class="text-danger"><?= form_error('role_id'); ?></small>
+            <div class="input-group mb-3">
+              <select class="form-control" name="role_id" id="exampleFormControlSelect1" placeholder=" ">
+                <option value="">Jabatan</option>
+                <option value="2">guru</option>
+                <option value="3">kepsek</option>
+              </select>
+            </div>
+           
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" placeholder="Password" name="password1">
+              
+            </div>
+            <small class="text-danger"><?= form_error('password1'); ?></small>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" placeholder="Retype password" name="password2">
+              
+            </div>
+            <small class="text-danger"><?= form_error('password2'); ?></small>
+            <div class="row">
+              <div class="col-4">
               </div>
-            </div>
-          </div>
-          <small class="text-danger"><?= form_error('nama_guru'); ?></small>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Masukkan NIK" name="nik">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-user"></span>
+              <div class="col-4">
+                <button type="submit" class="rounded-pill  btn btn-primary btn-block">Register</button>
               </div>
-            </div>
-          </div>
-          <small class="text-danger"><?= form_error('nik'); ?></small>
-          <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password" name="password1">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
+              <!-- /.col -->
+              <div class="col-4">
               </div>
+              <!-- /.col -->
             </div>
-          </div>
-          <small class="text-danger"><?= form_error('password1'); ?></small>
-          <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Retype password" name="password2">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
-            </div>
-          </div>
-          <small class="text-danger"><?= form_error('password2'); ?></small>
-          <div class="row">
-            <div class="col-4">
-            </div>
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Register</button>
-            </div>
-            <!-- /.col -->
-            <div class="col-4">
-            </div>
-            <!-- /.col -->
-          </div>
-        </form>
-
-        <div class="text-center mt-2">
-          <a href="<?= base_url('auth'); ?>" class="text-center">Sudah punya akun?</a>
+          </form>
+        </div>
+        <div class="mb-4 text-center mt-2">
+          <a href="<?= base_url('auth'); ?>" class=" text-center">Sudah punya akun?</a>
         </div>
       </div>
       <!-- /.form-box -->

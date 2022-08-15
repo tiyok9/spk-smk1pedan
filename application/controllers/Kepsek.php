@@ -7,8 +7,8 @@ class Kepsek extends CI_Controller
   public function index()
   {
     $data = [
-      'title' => 'Dashboard Kepala Sekolah',
-      'user' => $this->db->get_where('guru', ['nip' => $this->session->userdata('nik')])->row_array(),
+      'title' => 'Dashboard',
+      'user' => $this->db->get_where('admin', ['nip' => $this->session->userdata('nip')])->row_array(),
       'isi' => 'kepsek/dashboard'
     ];
     // check($data['user']);
